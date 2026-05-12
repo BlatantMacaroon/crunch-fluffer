@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "outDir": "./dist",
+    "rootDir": "../",             /* Allows it to see 'src' and 'shared' */
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowImportingTsExtensions": true, /* Useful for modern TS */
+    "noEmit": true                      /* tsx handles execution, so we don't need tsc to output files */
+  },
+  "include": ["src/**/*", "../shared/**/*"]
+}

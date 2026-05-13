@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx --watch --env-file=.env src/index.ts",
-  "test": "node --env-file=.env node_modules/vitest/vitest.mjs",
-  "test:ui": "node --env-file=.env node_modules/vitest/vitest.mjs --ui"
+    "test": "node --env-file=.env node_modules/vitest/vitest.mjs",
+    "test:ui": "node --env-file=.env node_modules/vitest/vitest.mjs --ui",
+    "start": "node node_modules/tsx/dist/cli.mjs src/index.ts"
   },
   "keywords": [],
   "author": "",

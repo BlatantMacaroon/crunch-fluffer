@@ -5,8 +5,10 @@ import { connectDB } from './database.ts';
 try {
     await connectDB();
 
-    app.listen(process.env.PORT, () => {
-        console.log(`Server running at http://localhost:${process.env.PORT}`);
+    const PORT = process.env.PORT || 3000;
+
+    app.listen(PORT, () => {
+        console.log(`Server running at http://localhost:${PORT}`);
     })
 } catch (err) {
    console.error('Critical failure during startup:', err); 

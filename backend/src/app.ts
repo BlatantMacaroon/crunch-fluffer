@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import crunchRoutes from './routes/crunchRoutes.ts';
 import fluffRoutes from './routes/fluffRoutes.ts';
+import { errorHandler } from './middleware/errorMiddleware.ts';
 
 const app = express();
 app.use(cors());
@@ -15,5 +16,7 @@ app.use((req, _res, next) => {
 
 app.use('/api/crunch', crunchRoutes)
 app.use('/api/fluff', fluffRoutes)
+
+app.use(errorHandler);
 
 export default app;

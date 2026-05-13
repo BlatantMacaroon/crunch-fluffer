@@ -1,3 +1,5 @@
+import type { DatabaseMeta } from "./databaseMeta";
+
 export interface FluffDto {
     crunchId: string;
     backstory: string;
@@ -20,6 +22,8 @@ export interface FluffDto {
     }
 }
 
+export interface Fluff extends FluffDto, DatabaseMeta {}
+
 export const Alignments = {
     LawfulGood: 'LG',
     NeutralGood: 'G',
@@ -38,11 +42,17 @@ export type Alignment = typeof Alignments[keyof typeof Alignments];
 export interface FluffGenerationArgs {
     model?: ModelName,
     themeKeywords?: string[]
-} 
+}
+
+export interface FluffArgs {
+    crunchId?: string;
+}
 
 export const ModelNames = {
     GeminiFlashFastest: 'gemini-flash-fastest',
-    Gemini25FlashLite: 'gemini-2.5-flash-lite'
+    Gemini25FlashLite: 'gemini-2.5-flash-lite',
+    Gemini3FlashPreview: 'gemini-3-flash-preview',
+    GeminiFlashLiteLatest: 'gemini-flash-lite-latest'
 } as const;
 
 export type ModelName = typeof ModelNames[keyof typeof ModelNames];

@@ -1,3 +1,5 @@
+import type { DatabaseMeta } from "./databaseMeta";
+
 export interface CrunchDto {
     strength: number,
     dexterity: number,
@@ -9,6 +11,8 @@ export interface CrunchDto {
     race: Race,
     level: number
 }
+
+export interface Crunch extends CrunchDto, DatabaseMeta {}
 
 export const Classes = {
     Fighter: 'FIGHTER',

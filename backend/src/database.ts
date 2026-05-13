@@ -4,10 +4,7 @@ import { MongoMemoryServer } from 'mongodb-memory-server';
 export const connectDB = async() => {
     let dbUrl = process.env.MONGO_URI;
 
-    // Use In-Memory if in dev OR test mode and no URI is provided
-    const isLocal = process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test';
-
-    if (isLocal && !dbUrl) {
+    if (process.env.NODE_ENV === 'test' || !dbUrl) {
         //use in-memory server
         const mongoServer = await MongoMemoryServer.create();
         dbUrl = mongoServer.getUri();

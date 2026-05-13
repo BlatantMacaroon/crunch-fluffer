@@ -1,9 +1,27 @@
-import { describe, it, expect, beforeAll, afterAll } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll, vi } from 'vitest';
 import supertest from 'supertest';
 import app from '../../src/app.js';
 import { connectDB } from '../../src/database.js';
 import mongoose from 'mongoose';
 import { CrunchModel } from '../../src/models/crunchModel.js';
+import * as aiService from '../../src/services/aiService.js';
+
+//don't want actual flaky connection to AI to slow down pipeline
+if (process.env.CI) {
+  vi.spyOn(aiService, 'generateFluff').mockResolvedValue({
+    backstory: "This is a mock backstory for CI purposes.",
+    appearance: "Mock appearance",
+    personalityTraits: ["Brave", "Kind"],
+    ideals: ["Justice"],
+    bonds: ["Family"],
+    flaws: ["Greedy"],
+    alignment: "G",
+    age: 25,
+    height: "6'0",
+    weight: 180,
+    crunchId: "placeholder"
+  } as any);
+}
 
 const request = supertest(app);
 

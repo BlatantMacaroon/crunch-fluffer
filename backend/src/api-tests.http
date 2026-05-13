@@ -3,14 +3,14 @@ POST http://localhost:3000/api/crunch
 Content-Type: application/json
 
 {
-    "strength": 18,
-    "dexterity": 12,
-    "constitution": 16,
-    "intelligence": 9,
-    "wisdom": 12,
-    "charisma": 8,
-    "class": "PALADIN",
-    "race": "HALF-ORC",
+    "strength": 6,
+    "dexterity": 7,
+    "constitution": 18,
+    "intelligence": 20,
+    "wisdom": 1,
+    "charisma": 1,
+    "class": "WIZARD",
+    "race": "GNOME",
     "level": 1
 }
 
@@ -23,14 +23,14 @@ GET http://localhost:3000/api/crunch/6a03c32d645e63844af89c48
 Content-Type: application/json
 
 ### Generate
-POST http://localhost:3000/api/fluff/6a03fb334f78c1c7404e769a
+POST http://localhost:3000/api/fluff/6a040a07ab7b73278e756bc1
 Content-Type: application/json
 
 {
-    "model": "gemini-2.5-flash-lite",
+    "model": "gemini-flash-lite-latest",
     "themeKeywords": [
-        "Space Opera",
-        "Mathematics",
-        "Fourth wall irony"
+        "Ravenloft",
+        "Orphan",
+        "Tourettes"
     ]
 }

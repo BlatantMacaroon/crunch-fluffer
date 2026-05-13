@@ -42,7 +42,9 @@ export interface FluffGenerationArgs {
 
 export const ModelNames = {
     GeminiFlashFastest: 'gemini-flash-fastest',
-    Gemini25FlashLite: 'gemini-2.5-flash-lite'
+    Gemini25FlashLite: 'gemini-2.5-flash-lite',
+    Gemini3FlashPreview: 'gemini-3-flash-preview',
+    GeminiFlashLiteLatest: 'gemini-flash-lite-latest'
 } as const;
 
 export type ModelName = typeof ModelNames[keyof typeof ModelNames];

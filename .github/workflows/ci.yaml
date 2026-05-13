@@ -2,7 +2,7 @@ name: CI
 on: [push, pull_request]
 
 jobs:
-  test-backend:
+  backend-gate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -13,9 +13,13 @@ jobs:
         run: |
           cd backend
           npm install
+          touch .env
           npm test
+        env:
+          NODE_ENV: test
+          CI: true # This tells Vitest we are in GitHub
 
-  test-frontend:
+  frontend-gate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

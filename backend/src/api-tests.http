@@ -6,11 +6,11 @@ Content-Type: application/json
     "strength": 18,
     "dexterity": 12,
     "constitution": 16,
-    "intelligence": 8,
-    "wisdom": 10,
+    "intelligence": 9,
+    "wisdom": 12,
     "charisma": 8,
-    "class": "BARBARIAN",
-    "race": "DWARF",
+    "class": "PALADIN",
+    "race": "HALF-ORC",
     "level": 1
 }
 
@@ -23,5 +23,14 @@ GET http://localhost:3000/api/crunch/6a03c32d645e63844af89c48
 Content-Type: application/json
 
 ### Generate
-POST http://localhost:3000/api/fluff/6a03d4b014e7386af71432ff
+POST http://localhost:3000/api/fluff/6a03fb334f78c1c7404e769a
 Content-Type: application/json
+
+{
+    "model": "gemini-2.5-flash-lite",
+    "themeKeywords": [
+        "Space Opera",
+        "Mathematics",
+        "Fourth wall irony"
+    ]
+}

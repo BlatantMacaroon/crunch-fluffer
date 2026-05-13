@@ -31,7 +31,9 @@ export const Races = {
     Elf: 'ELF',
     HalfElf: 'HALF-ELF',
     Halfling: 'HALFLING',
-    Gnome: 'GNOME'
+    Gnome: 'GNOME',
+    HalfOrc: 'HALF-ORC',
+    Eladrin: 'ELADRIN'
 } as const;
 
 export type Class = typeof Classes[keyof typeof Classes];

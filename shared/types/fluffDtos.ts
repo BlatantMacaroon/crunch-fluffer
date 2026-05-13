@@ -36,7 +36,8 @@ export const Alignments = {
 export type Alignment = typeof Alignments[keyof typeof Alignments];
 
 export interface FluffGenerationArgs {
-    model?: ModelName
+    model?: ModelName,
+    themeKeywords?: string[]
 } 
 
 export const ModelNames = {

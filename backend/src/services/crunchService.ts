@@ -1,4 +1,4 @@
-import { CrunchArgs, CrunchDto } from '../../../shared/types/crunchDtos.ts';
+import { CrunchArgs, CrunchDto } from '@shared/types/crunchDtos.ts';
 import { CrunchDocument } from '../models/crunchModel.ts';
 import * as crunchRepo from '../repos/crunchRepo.ts';
 
@@ -8,4 +8,8 @@ export const create = async (data: CrunchDto): Promise<CrunchDocument> => {
 
 export const getByArgs = async (args: CrunchArgs): Promise<CrunchDocument[]> => {
     return await crunchRepo.getByArgs(args);
+}
+
+export const getById = async (id: string): Promise<CrunchDocument | null> => {
+    return await crunchRepo.getById(id)
 }

@@ -1,0 +1,27 @@
+### Create Crunch
+POST http://localhost:3000/api/crunch
+Content-Type: application/json
+
+{
+    "strength": 18,
+    "dexterity": 12,
+    "constitution": 16,
+    "intelligence": 8,
+    "wisdom": 10,
+    "charisma": 8,
+    "class": "BARBARIAN",
+    "race": "DWARF",
+    "level": 1
+}
+
+### Get Crunches
+GET http://localhost:3000/api/crunch
+Content-Type: application/json
+
+### Get Crunch
+GET http://localhost:3000/api/crunch/6a03c32d645e63844af89c48
+Content-Type: application/json
+
+### Generate
+POST http://localhost:3000/api/fluff/6a03d4b014e7386af71432ff
+Content-Type: application/json

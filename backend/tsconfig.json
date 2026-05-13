@@ -9,7 +9,10 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowImportingTsExtensions": true, /* Useful for modern TS */
-    "noEmit": true                      /* tsx handles execution, so we don't need tsc to output files */
+    "noEmit": true,
+    "paths": {
+      "@shared/*": ["../shared/*"]
+    }                      /* tsx handles execution, so we don't need tsc to output files */
   },
   "include": ["src/**/*", "../shared/**/*"]
 }

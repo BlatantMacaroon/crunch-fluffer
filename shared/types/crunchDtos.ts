@@ -10,7 +10,7 @@ export interface CrunchDto {
     level: number
 }
 
-export const Class = {
+export const Classes = {
     Fighter: 'FIGHTER',
     Ranger: 'RANGER',
     Paladin: 'PALADIN',
@@ -24,7 +24,7 @@ export const Class = {
     Rogue: 'ROGUE'
 } as const;
 
-export const Race = {
+export const Races = {
     Human: 'HUMAN',
     Dwarf: 'DWARF',
     Dragonborn: 'DRAGONBORN',
@@ -34,8 +34,8 @@ export const Race = {
     Gnome: 'GNOME'
 } as const;
 
-export type Class = typeof Class[keyof typeof Class];
-export type Race = typeof Race[keyof typeof Race];
+export type Class = typeof Classes[keyof typeof Classes];
+export type Race = typeof Races[keyof typeof Races];
 
 export interface CrunchArgs {
     classes?: Class[];

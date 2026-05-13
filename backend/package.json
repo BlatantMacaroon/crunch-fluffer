@@ -5,14 +5,15 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx --watch --env-file=.env src/index.ts",
-    "test": "vitest",
-    "test:ui": "vitest --ui"
+  "test": "node --env-file=.env node_modules/vitest/vitest.mjs",
+  "test:ui": "node --env-file=.env node_modules/vitest/vitest.mjs --ui"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
     "@types/cors": "^2.8.19",
     "cors": "^2.8.6",
     "express": "^5.2.1",
@@ -27,6 +28,7 @@
     "supertest": "^7.2.2",
     "tsx": "^4.21.0",
     "typescript": "^6.0.3",
+    "vite-tsconfig-paths": "^6.1.1",
     "vitest": "^4.1.6"
   }
 }

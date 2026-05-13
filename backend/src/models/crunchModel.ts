@@ -1,5 +1,5 @@
 import { Schema, model, Document } from 'mongoose';
-import { CrunchDto, Class, Race } from '../../../shared/types/crunchDtos.ts';
+import { CrunchDto, Classes, Races } from '@shared/types/crunchDtos.js';
 
 export interface CrunchDocument extends CrunchDto, Document {}
 
@@ -24,12 +24,12 @@ const crunchSchema = new Schema<CrunchDocument>({
     class: {
         type: String,
         required: true,
-        enum: Object.values(Class)
+        enum: Object.values(Classes)
     },
     race: {
         type: String,
         required: true,
-        enum: Object.values(Race)
+        enum: Object.values(Races)
     },
     level: oneToTwenty
 }, { timestamps: true });

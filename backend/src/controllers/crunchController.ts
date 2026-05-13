@@ -1,6 +1,6 @@
 import * as crunchService from '../services/crunchService.ts';
 import { Request, Response } from 'express';
-import { CrunchArgs, CrunchDto } from '../../../shared/types/crunchDtos.ts';
+import { CrunchArgs, CrunchDto } from '@shared/types/crunchDtos.ts';
 
 export const create = async (req: Request, res: Response) => {
     try {
@@ -23,5 +23,19 @@ export const getByArgs = async (req: Request, res: Response) => {
     }
     catch (err) {
         res.status(500).json({errorMessage: "Fail!"}); //todo: add some better handling
+    }
+}
+
+export const get = async (req: Request, res: Response) => {
+    try {
+        const result = await crunchService.getById(req.params.id as string);
+
+        if (!result)
+            return res.status(404).json("Crunch not found.");
+
+        else res.status(200).json(result.toJSON());
+    }
+    catch (err) {
+        res.status(500).json({ error: "Unhandled exception", details: err })
     }
 }

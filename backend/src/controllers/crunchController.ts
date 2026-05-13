@@ -1,41 +1,23 @@
 import * as crunchService from '../services/crunchService.ts';
 import { Request, Response } from 'express';
 import { CrunchArgs, CrunchDto } from '@shared/types/crunchDtos.ts';
+import { asyncHandler } from '../utils/asyncHandler.ts';
 
-export const create = async (req: Request, res: Response) => {
-    try {
-        const created = await crunchService.create(req.body as CrunchDto);
+export const create = asyncHandler(async (req: Request, res: Response) => {
+    const created = await crunchService.create(req.body as CrunchDto);
+    res.status(201).json(created.toJSON());        
+});
 
-        res.status(201).json(created.toJSON());
-    }
-    catch (err) {
-        res.status(400).json({ 
-            errorMessage: "Failed to create.", 
-            innerError: err });
-    }
-}
+export const getByArgs = asyncHandler(async (req: Request, res: Response) => {
+    const result = await crunchService.getByArgs(req.params as CrunchArgs)
+    res.status(200).json(result);
+});
 
-export const getByArgs = async (req: Request, res: Response) => {
-    try {
-        const result = await crunchService.getByArgs(req.params as CrunchArgs)
+export const get = asyncHandler(async (req: Request, res: Response) => {
+    const result = await crunchService.getById(req.params.id as string);
 
-        res.status(200).json(result);
-    }
-    catch (err) {
-        res.status(500).json({errorMessage: "Fail!"}); //todo: add some better handling
-    }
-}
+    if (!result)
+        return res.status(404).json({ message: "Crunch not found" });
 
-export const get = async (req: Request, res: Response) => {
-    try {
-        const result = await crunchService.getById(req.params.id as string);
-
-        if (!result)
-            return res.status(404).json("Crunch not found.");
-
-        else res.status(200).json(result.toJSON());
-    }
-    catch (err) {
-        res.status(500).json({ error: "Unhandled exception", details: err })
-    }
-}
+    else res.status(200).json(result.toJSON());
+});

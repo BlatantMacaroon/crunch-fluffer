@@ -1,20 +1,22 @@
-import { FluffGenerationArgs } from '@shared/types/fluffDtos.ts';
+import { FluffArgs, FluffGenerationArgs } from '@shared/types/fluffDtos.ts';
 import * as fluffService from '../services/fluffService.ts';
 import { Request, Response } from 'express';
+import { asyncHandler } from '../utils/asyncHandler.ts';
 
-export const generate = async (req: Request, res: Response) => {
-    try {
-        const args = req.body as FluffGenerationArgs;
+export const generate = asyncHandler(async (req: Request, res: Response) => {
+    const args = req.body as FluffGenerationArgs;
+    const result = await fluffService.generate(req.params.crunchId as string, args);
+    res.status(201).json(result.toJSON());
+});
 
-        const result = await fluffService.generate(req.params.crunchId as string, args);
+export const getByArgs = asyncHandler(async (req: Request, res: Response) => {
+    console.log("here");
+    const { crunchId } = req.query;
 
-        res.status(201).json(result.toJSON());
-    }
-    catch (err) {
-        console.log(err);
-        res.status(500).json({
-            error: "Failed to generate or save.",
-            details: err
-        });
-    }
-}
+    const args: FluffArgs = { 
+        crunchId: typeof crunchId === 'string' ? crunchId : undefined 
+    };
+
+    const result = await fluffService.getByArgs(args);
+    res.status(200).json(result);
+});
